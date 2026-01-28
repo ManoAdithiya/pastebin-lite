@@ -14,7 +14,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ MongoDB connection with error handling
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
@@ -23,11 +22,10 @@ mongoose
     process.exit(1);
   });
 
-// Routes
 app.use("/api", healthRoutes);
 app.use("/api/pastes", pasteRoutes);
 
-// View paste as HTML
+
 app.get("/p/:id", async (req, res) => {
   try {
     const paste = await Paste.findById(req.params.id);
@@ -48,7 +46,7 @@ app.get("/p/:id", async (req, res) => {
 
     const safeContent = paste.content
       .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;"); // ✅ extra safety
+      .replace(/>/g, "&gt;");
 
     res.send(`
       <html>
@@ -63,7 +61,7 @@ app.get("/p/:id", async (req, res) => {
   }
 });
 
-// Start server
+
 app.listen(3000, () => {
   console.log(`Server running on port 3000`);
 });
