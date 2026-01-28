@@ -7,7 +7,7 @@ export default function CreatePaste() {
   async function submit(e) {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:3000/api/pastes", {
+    const res = await fetch("https://pastebin-lite-n3r7.onrender.com/api/pastes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content }),
