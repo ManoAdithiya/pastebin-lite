@@ -5,8 +5,8 @@ import cors from "cors";
 
 import healthRoutes from "./routes/health.js";
 import pasteRoutes from "./routes/pastes.js";
-import Paste from "./models/paste.js"; // ✅ FIX
-import { getNow } from "./utils/time.js"; // ✅ FIX
+import Paste from "./models/paste.js";
+import { getNow } from "./utils/time.js";
 
 dotenv.config();
 
